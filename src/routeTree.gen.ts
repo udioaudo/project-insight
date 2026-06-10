@@ -9,9 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ChronicleRouteImport } from './routes/chronicle'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ZodiacIndexRouteImport } from './routes/zodiac.index'
+import { Route as ZodiacSignRouteImport } from './routes/zodiac.$sign'
 
+const ChronicleRoute = ChronicleRouteImport.update({
+  id: '/chronicle',
+  path: '/chronicle',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -22,35 +29,55 @@ const ZodiacIndexRoute = ZodiacIndexRouteImport.update({
   path: '/zodiac/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZodiacSignRoute = ZodiacSignRouteImport.update({
+  id: '/zodiac/$sign',
+  path: '/zodiac/$sign',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/chronicle': typeof ChronicleRoute
+  '/zodiac/$sign': typeof ZodiacSignRoute
   '/zodiac/': typeof ZodiacIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/chronicle': typeof ChronicleRoute
+  '/zodiac/$sign': typeof ZodiacSignRoute
   '/zodiac': typeof ZodiacIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/chronicle': typeof ChronicleRoute
+  '/zodiac/$sign': typeof ZodiacSignRoute
   '/zodiac/': typeof ZodiacIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/zodiac/'
+  fullPaths: '/' | '/chronicle' | '/zodiac/$sign' | '/zodiac/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/zodiac'
-  id: '__root__' | '/' | '/zodiac/'
+  to: '/' | '/chronicle' | '/zodiac/$sign' | '/zodiac'
+  id: '__root__' | '/' | '/chronicle' | '/zodiac/$sign' | '/zodiac/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChronicleRoute: typeof ChronicleRoute
+  ZodiacSignRoute: typeof ZodiacSignRoute
   ZodiacIndexRoute: typeof ZodiacIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/chronicle': {
+      id: '/chronicle'
+      path: '/chronicle'
+      fullPath: '/chronicle'
+      preLoaderRoute: typeof ChronicleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -65,11 +92,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZodiacIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zodiac/$sign': {
+      id: '/zodiac/$sign'
+      path: '/zodiac/$sign'
+      fullPath: '/zodiac/$sign'
+      preLoaderRoute: typeof ZodiacSignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChronicleRoute: ChronicleRoute,
+  ZodiacSignRoute: ZodiacSignRoute,
   ZodiacIndexRoute: ZodiacIndexRoute,
 }
 export const routeTree = rootRouteImport
