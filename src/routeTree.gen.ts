@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as NebulaeRouteImport } from './routes/nebulae'
 import { Route as GalaxiesRouteImport } from './routes/galaxies'
 import { Route as ChronicleRouteImport } from './routes/chronicle'
@@ -17,6 +18,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ZodiacIndexRouteImport } from './routes/zodiac.index'
 import { Route as ZodiacSignRouteImport } from './routes/zodiac.$sign'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NebulaeRoute = NebulaeRouteImport.update({
   id: '/nebulae',
   path: '/nebulae',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/chronicle': typeof ChronicleRoute
   '/galaxies': typeof GalaxiesRoute
   '/nebulae': typeof NebulaeRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/zodiac/$sign': typeof ZodiacSignRoute
   '/zodiac/': typeof ZodiacIndexRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/chronicle': typeof ChronicleRoute
   '/galaxies': typeof GalaxiesRoute
   '/nebulae': typeof NebulaeRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/zodiac/$sign': typeof ZodiacSignRoute
   '/zodiac': typeof ZodiacIndexRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/chronicle': typeof ChronicleRoute
   '/galaxies': typeof GalaxiesRoute
   '/nebulae': typeof NebulaeRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/zodiac/$sign': typeof ZodiacSignRoute
   '/zodiac/': typeof ZodiacIndexRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/chronicle'
     | '/galaxies'
     | '/nebulae'
+    | '/sitemap.xml'
     | '/zodiac/$sign'
     | '/zodiac/'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/chronicle'
     | '/galaxies'
     | '/nebulae'
+    | '/sitemap.xml'
     | '/zodiac/$sign'
     | '/zodiac'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/chronicle'
     | '/galaxies'
     | '/nebulae'
+    | '/sitemap.xml'
     | '/zodiac/$sign'
     | '/zodiac/'
   fileRoutesById: FileRoutesById
@@ -117,12 +129,20 @@ export interface RootRouteChildren {
   ChronicleRoute: typeof ChronicleRoute
   GalaxiesRoute: typeof GalaxiesRoute
   NebulaeRoute: typeof NebulaeRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ZodiacSignRoute: typeof ZodiacSignRoute
   ZodiacIndexRoute: typeof ZodiacIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/nebulae': {
       id: '/nebulae'
       path: '/nebulae'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChronicleRoute: ChronicleRoute,
   GalaxiesRoute: GalaxiesRoute,
   NebulaeRoute: NebulaeRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   ZodiacSignRoute: ZodiacSignRoute,
   ZodiacIndexRoute: ZodiacIndexRoute,
 }
