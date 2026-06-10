@@ -100,7 +100,7 @@ function ZodiacPage() {
                   offset === 0 ? "text-glow text-foreground" : "text-muted-foreground/70"
                 }`}
               >
-                {s.symbol}
+                {`${s.symbol}\uFE0E`}
               </span>
               {i === monthSign && (
                 <span className="mt-2 h-1 w-1 rounded-full bg-accent shadow-[0_0_6px_rgba(74,144,184,0.9)]" />
