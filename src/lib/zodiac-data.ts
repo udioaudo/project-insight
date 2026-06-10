@@ -261,18 +261,11 @@ export function visibleTonight(sign: ZodiacSign, date = new Date()): boolean {
 
 /** The zodiac sign for the current date (sun sign month). */
 export function currentSignIndex(date = new Date()): number {
-  const m = date.getMonth() + 1;
+  const m = date.getMonth(); // 0-11
   const d = date.getDate();
-  const ranges: [number, number, number][] = [
-    [3, 21, 0], [4, 20, 1], [5, 21, 2], [6, 22, 3], [7, 23, 4], [8, 23, 5],
-    [9, 23, 6], [10, 24, 7], [11, 22, 8], [12, 22, 9], [1, 20, 10], [2, 19, 11],
-  ];
-  let idx = 11;
-  for (const [mm, dd, i] of ranges) {
-    if (m > mm || (m === mm && d >= dd)) idx = i;
-  }
-  if (m === 1 && d < 20) idx = 9;
-  if (m === 2 && d < 19) idx = 10;
-  if (m === 3 && d < 21) idx = 11;
-  return idx;
+  // day each month when the sign changes (Jan..Dec)
+  const cutoff = [20, 19, 21, 20, 21, 22, 23, 23, 23, 24, 22, 22];
+  // sign index that BEGINS at that month's cutoff (Jan 20 → Aquarius=10, ...)
+  const signAtCutoff = [10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  return d >= cutoff[m] ? signAtCutoff[m] : signAtCutoff[(m + 11) % 12];
 }
