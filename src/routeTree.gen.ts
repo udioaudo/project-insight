@@ -9,38 +9,168 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as NebulaeRouteImport } from './routes/nebulae'
+import { Route as GalaxiesRouteImport } from './routes/galaxies'
+import { Route as ChronicleRouteImport } from './routes/chronicle'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ZodiacIndexRouteImport } from './routes/zodiac.index'
+import { Route as ZodiacSignRouteImport } from './routes/zodiac.$sign'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NebulaeRoute = NebulaeRouteImport.update({
+  id: '/nebulae',
+  path: '/nebulae',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalaxiesRoute = GalaxiesRouteImport.update({
+  id: '/galaxies',
+  path: '/galaxies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChronicleRoute = ChronicleRouteImport.update({
+  id: '/chronicle',
+  path: '/chronicle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZodiacIndexRoute = ZodiacIndexRouteImport.update({
+  id: '/zodiac/',
+  path: '/zodiac/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZodiacSignRoute = ZodiacSignRouteImport.update({
+  id: '/zodiac/$sign',
+  path: '/zodiac/$sign',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/chronicle': typeof ChronicleRoute
+  '/galaxies': typeof GalaxiesRoute
+  '/nebulae': typeof NebulaeRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/zodiac/$sign': typeof ZodiacSignRoute
+  '/zodiac/': typeof ZodiacIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/chronicle': typeof ChronicleRoute
+  '/galaxies': typeof GalaxiesRoute
+  '/nebulae': typeof NebulaeRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/zodiac/$sign': typeof ZodiacSignRoute
+  '/zodiac': typeof ZodiacIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/chronicle': typeof ChronicleRoute
+  '/galaxies': typeof GalaxiesRoute
+  '/nebulae': typeof NebulaeRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/zodiac/$sign': typeof ZodiacSignRoute
+  '/zodiac/': typeof ZodiacIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/chronicle'
+    | '/galaxies'
+    | '/nebulae'
+    | '/sitemap.xml'
+    | '/zodiac/$sign'
+    | '/zodiac/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/chronicle'
+    | '/galaxies'
+    | '/nebulae'
+    | '/sitemap.xml'
+    | '/zodiac/$sign'
+    | '/zodiac'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/chronicle'
+    | '/galaxies'
+    | '/nebulae'
+    | '/sitemap.xml'
+    | '/zodiac/$sign'
+    | '/zodiac/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ChronicleRoute: typeof ChronicleRoute
+  GalaxiesRoute: typeof GalaxiesRoute
+  NebulaeRoute: typeof NebulaeRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ZodiacSignRoute: typeof ZodiacSignRoute
+  ZodiacIndexRoute: typeof ZodiacIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nebulae': {
+      id: '/nebulae'
+      path: '/nebulae'
+      fullPath: '/nebulae'
+      preLoaderRoute: typeof NebulaeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galaxies': {
+      id: '/galaxies'
+      path: '/galaxies'
+      fullPath: '/galaxies'
+      preLoaderRoute: typeof GalaxiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chronicle': {
+      id: '/chronicle'
+      path: '/chronicle'
+      fullPath: '/chronicle'
+      preLoaderRoute: typeof ChronicleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +178,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zodiac/': {
+      id: '/zodiac/'
+      path: '/zodiac'
+      fullPath: '/zodiac/'
+      preLoaderRoute: typeof ZodiacIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zodiac/$sign': {
+      id: '/zodiac/$sign'
+      path: '/zodiac/$sign'
+      fullPath: '/zodiac/$sign'
+      preLoaderRoute: typeof ZodiacSignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ChronicleRoute: ChronicleRoute,
+  GalaxiesRoute: GalaxiesRoute,
+  NebulaeRoute: NebulaeRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ZodiacSignRoute: ZodiacSignRoute,
+  ZodiacIndexRoute: ZodiacIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
