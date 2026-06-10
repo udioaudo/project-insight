@@ -1,7 +1,7 @@
 import { jsxs, jsx, Fragment } from "react/jsx-runtime";
 import { Link } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
-import { R as Route, Z as ZODIAC, v as visibleTonight } from "./router-Bp2tU4jO.js";
+import { R as Route, Z as ZODIAC, v as visibleTonight } from "./router-DtyZ5NgJ.js";
 import "@tanstack/react-query";
 function SignPage() {
   const {

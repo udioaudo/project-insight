@@ -332,9 +332,14 @@ const Route$8 = createRootRouteWithContext()({
       },
       { name: "author", content: "COSMOS" },
       { property: "og:title", content: "COSMOS — An Immersive Journey Through the Universe" },
-      { property: "og:description", content: "13.8 billion years, waiting for you." },
+      { property: "og:description", content: "Project Insight is a web application that replicates website functionality and design based on provided specifications and demo images." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" }
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "COSMOS — An Immersive Journey Through the Universe" },
+      { name: "description", content: "Project Insight is a web application that replicates website functionality and design based on provided specifications and demo images." },
+      { name: "twitter:description", content: "Project Insight is a web application that replicates website functionality and design based on provided specifications and demo images." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/92e7ba1b-a0ae-42b3-8d65-fc5381a8f3e6/id-preview-3cfd88ba--01639990-bd44-45f1-8309-3e3f78c5795e.lovable.app-1781107881419.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/92e7ba1b-a0ae-42b3-8d65-fc5381a8f3e6/id-preview-3cfd88ba--01639990-bd44-45f1-8309-3e3f78c5795e.lovable.app-1781107881419.png" }
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -858,7 +863,7 @@ const Route$2 = createFileRoute("/")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-const $$splitComponentImporter$1 = () => import("./zodiac.index-uQcjT7tc.js");
+const $$splitComponentImporter$1 = () => import("./zodiac.index-Broh7IAC.js");
 const Route$1 = createFileRoute("/zodiac/")({
   head: () => ({
     meta: [{
@@ -876,7 +881,7 @@ const Route$1 = createFileRoute("/zodiac/")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-const $$splitComponentImporter = () => import("./zodiac._sign-CnfvfJ-2.js");
+const $$splitComponentImporter = () => import("./zodiac._sign-8F1N6L5C.js");
 const $$splitNotFoundComponentImporter = () => import("./zodiac._sign-BaJZajtf.js");
 const $$splitErrorComponentImporter = () => import("./zodiac._sign-C-Vfoua3.js");
 const Route = createFileRoute("/zodiac/$sign")({
