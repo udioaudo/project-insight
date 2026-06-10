@@ -95,13 +95,34 @@ function ZodiacPage() {
                 zIndex: 10 - Math.abs(offset),
               }}
             >
-              <span
-                className={`font-display text-6xl font-thin transition-all duration-500 md:text-7xl ${
-                  offset === 0 ? "text-glow text-foreground" : "text-muted-foreground/70"
+              <svg
+                viewBox="0 0 100 100"
+                className={`h-24 w-24 transition-all duration-500 md:h-28 md:w-28 ${
+                  offset === 0 ? "opacity-100 drop-shadow-[0_0_10px_rgba(237,240,244,0.45)]" : "opacity-70"
                 }`}
+                aria-hidden="true"
               >
-                {`${s.symbol}\uFE0E`}
-              </span>
+                {s.lines.map(([a, b], li) => (
+                  <line
+                    key={li}
+                    x1={s.stars[a].x}
+                    y1={s.stars[a].y}
+                    x2={s.stars[b].x}
+                    y2={s.stars[b].y}
+                    stroke={offset === 0 ? "rgba(237,240,244,0.5)" : "rgba(237,240,244,0.25)"}
+                    strokeWidth="0.7"
+                  />
+                ))}
+                {s.stars.map((st, si) => (
+                  <circle
+                    key={si}
+                    cx={st.x}
+                    cy={st.y}
+                    r={st.name ? 2 : 1.2}
+                    fill={offset === 0 ? "#EDF0F4" : "rgba(237,240,244,0.6)"}
+                  />
+                ))}
+              </svg>
               {i === monthSign && (
                 <span className="mt-2 h-1 w-1 rounded-full bg-accent shadow-[0_0_6px_rgba(74,144,184,0.9)]" />
               )}
