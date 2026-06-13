@@ -2,7 +2,7 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { useRouterState, Link, createRootRouteWithContext, useRouter, Outlet, HeadContent, Scripts, createFileRoute, lazyRouteComponent, notFound, createRouter } from "@tanstack/react-router";
 import { jsx, jsxs } from "react/jsx-runtime";
 import { useRef, useEffect, useState } from "react";
-const appCss = "/assets/styles-BXHXrjHY.css";
+const appCss = "/assets/styles-B-pn7iPD.css";
 function reportLovableError(error, context = {}) {
   if (typeof window === "undefined") return;
   window.__lovableEvents?.captureException?.(
@@ -863,7 +863,7 @@ const Route$2 = createFileRoute("/")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-const $$splitComponentImporter$1 = () => import("./zodiac.index-Broh7IAC.js");
+const $$splitComponentImporter$1 = () => import("./zodiac.index-B2x1fdXw.js");
 const Route$1 = createFileRoute("/zodiac/")({
   head: () => ({
     meta: [{
@@ -881,7 +881,7 @@ const Route$1 = createFileRoute("/zodiac/")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-const $$splitComponentImporter = () => import("./zodiac._sign-8F1N6L5C.js");
+const $$splitComponentImporter = () => import("./zodiac._sign-Cf0btLKq.js");
 const $$splitNotFoundComponentImporter = () => import("./zodiac._sign-BaJZajtf.js");
 const $$splitErrorComponentImporter = () => import("./zodiac._sign-C-Vfoua3.js");
 const Route = createFileRoute("/zodiac/$sign")({

@@ -1,1 +1,0 @@
-import{j as r}from"./index--1dG2m2U.js";const o=({error:e})=>r.jsx("div",{className:"flex min-h-screen items-center justify-center text-muted-foreground",role:"alert",children:e.message});export{o as errorComponent};
