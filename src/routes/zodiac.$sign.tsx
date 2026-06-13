@@ -231,19 +231,6 @@ function SignPage() {
       <p className="mt-3 text-center text-[10px] uppercase tracking-wide-x text-muted-foreground/50">
         Drag to rotate · stars positioned by real distance · 拖拽旋转，按真实距离立体分布
       </p>
-      {/* sentinel for parser */}
-      <div style={{ display: "none" }}>
-        <span>{(() => "")()}
-                  </text>
-                </>
-              )}
-            </g>
-          ))}
-        </svg>
-        <p className="mt-2 text-center text-[10px] uppercase tracking-wide-x text-muted-foreground/50">
-          Drag to rotate · 拖拽旋转观测
-        </p>
-      </div>
 
       {/* Data */}
       <section className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-px border border-border bg-border/50 md:grid-cols-4">
